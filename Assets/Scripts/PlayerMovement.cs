@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     if (!dead)
     {
       age += Time.fixedDeltaTime / 10f;
-      rb.MovePosition(transform.position + inputVector * Time.deltaTime * speed);
+      rb.MovePosition(transform.position + Vector3.Normalize  (inputVector) * Time.deltaTime * speed);
     }
   }
 
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         else
           LoadSpritesheet();
       }
-      speed = 5.05f - 0.95f * age - 0.25f * age * age;
+      speed = 5.5f - 0.95f * age - 0.25f * age * age;
 
     }
     sr.sprite = spritesheet[sr.sprite.name];
