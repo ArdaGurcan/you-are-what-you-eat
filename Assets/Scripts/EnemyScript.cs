@@ -58,8 +58,7 @@ public class EnemyScript : MonoBehaviour
       RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, 4f, mask);
 
       movementVector = Vector3.zero;
-      if (hit.collider != null)
-        // Debug.Log(hit.collider.name);
+
       if (hit.collider != null && hit.collider.CompareTag("Player"))
       {
         movementVector = player.position - transform.position;
@@ -73,7 +72,6 @@ public class EnemyScript : MonoBehaviour
 
       rb.MovePosition(transform.position + Vector3.Normalize(movementVector) * Time.fixedDeltaTime * speed / 2 );
       Vector2 velocity = (transform.position - lastPos) / Time.fixedDeltaTime;
-      // Debug.Log("Velocity: " + velocity);
 
       anim.SetFloat("MoveX", velocity.x);
       anim.SetFloat("MoveY", velocity.y);
