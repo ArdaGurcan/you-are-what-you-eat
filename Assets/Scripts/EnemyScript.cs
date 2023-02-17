@@ -36,11 +36,14 @@ public class EnemyScript : MonoBehaviour
 
   public float health = 3.0f;
 
+  public Collider2D enemy_collider;
+
   void Start()
   {
     player = GameObject.FindGameObjectWithTag("Player").transform;
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
+    enemy_collider = GetComponent<Collider2D>();
     spriteRenderer = GetComponent<SpriteRenderer>();
     firstSpritesheetName = SpriteSheetName;
     playerScript = player.GetComponent<PlayerMovement>();
@@ -70,7 +73,7 @@ public class EnemyScript : MonoBehaviour
 
       rb.MovePosition(transform.position + Vector3.Normalize(movementVector) * Time.fixedDeltaTime * speed / 2 );
       Vector2 velocity = (transform.position - lastPos) / Time.fixedDeltaTime;
-      Debug.Log("Velocity: " + velocity);
+      // Debug.Log("Velocity: " + velocity);
 
       anim.SetFloat("MoveX", velocity.x);
       anim.SetFloat("MoveY", velocity.y);
@@ -78,13 +81,15 @@ public class EnemyScript : MonoBehaviour
       lastPos = transform.position;
     }
     else {
-      Debug.Log("he shouldn't move after this :(");
+      //Debug.Log("he shouldn't move after this :(");
       speed = 0f;
       rb.isKinematic = true;
+      enemy_collider.enabled = false;
+
     }
 
     if (health <= 0.0) {
-      Debug.Log("Health is 0 or less. Enemy has died.");
+      // Debug.Log("Health is 0 or less. Enemy has died.");
       Die();
     }
 
