@@ -52,7 +52,7 @@ public class EnemyScript : MonoBehaviour
 
   void FixedUpdate()
   {
-    
+
     if (!dead && !playerScript.eating)
     {
       RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, 4f, mask);
@@ -65,12 +65,12 @@ public class EnemyScript : MonoBehaviour
       }
       else
       {
-        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise(Time.fixedTime * noiseScale, 0) * 2 - 1, Mathf.PerlinNoise(0, Time.fixedTime * noiseScale) * 2 - 1);
+        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise((Time.fixedTime * noiseScale) % float.MaxValue, 0) * 2 - 1, Mathf.PerlinNoise(0, (Time.fixedTime * noiseScale) % float.MaxValue) * 2 - 1);
         if (perlinVector.sqrMagnitude > movementThreshold)
           movementVector = perlinVector;
       }
 
-      rb.MovePosition(transform.position + Vector3.Normalize(movementVector) * Time.fixedDeltaTime * speed / 2 );
+      rb.MovePosition(transform.position + Vector3.Normalize(movementVector) * Time.fixedDeltaTime * speed / 2);
       Vector2 velocity = (transform.position - lastPos) / Time.fixedDeltaTime;
 
       anim.SetFloat("MoveX", velocity.x);
@@ -78,16 +78,9 @@ public class EnemyScript : MonoBehaviour
       anim.SetFloat("Speed", velocity.sqrMagnitude);
       lastPos = transform.position;
     }
-    else {
-      //Debug.Log("he shouldn't move after this :(");
-      speed = 0f;
-      rb.isKinematic = true;
-      enemy_collider.enabled = false;
 
-    }
-
-    if (health <= 0.0) {
-      // Debug.Log("Health is 0 or less. Enemy has died.");
+    if (health <= 0.0)
+    {
       Die();
     }
 
@@ -95,6 +88,7 @@ public class EnemyScript : MonoBehaviour
 
   public void Die()
   {
+    rb.isKinematic = true;
     dead = true;
     anim.SetBool("Dead", true);
 
@@ -128,7 +122,8 @@ public class EnemyScript : MonoBehaviour
     LoadedSpriteSheetName = SpriteSheetName;
   }
 
-  void OnHit(float damage) {
+  void OnHit(float damage)
+  {
     Debug.Log("Enemy was hit for " + damage);
     health = health - damage;
   }

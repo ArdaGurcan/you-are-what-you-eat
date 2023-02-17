@@ -212,7 +212,10 @@ MonoBehaviour:
   movementThreshold: 0.05
   SpriteSheetName: enemy1
   health: 3
+<<<<<<< HEAD
   enemy_collider: {fileID: 506741448}
+=======
+>>>>>>> 164d07b (make player appear behind decor and fix rochelle enemy not moving bug)
 --- !u!212 &506741446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -295,7 +298,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.15}
   serializedVersion: 2
-  m_Radius: 0.4375
+  m_Radius: 0.27849758
 --- !u!50 &506741449
 Rigidbody2D:
   serializedVersion: 4
@@ -1568,7 +1571,11 @@ MonoBehaviour:
   image: {fileID: 1734367834}
   eatingAnimation: {fileID: 748079528}
   speed: 5
+<<<<<<< HEAD
   swordHitbox: {fileID: 1717310425}
+=======
+  swordHitbox: {fileID: 0}
+>>>>>>> 164d07b (make player appear behind decor and fix rochelle enemy not moving bug)
   age: 0
   dead: 0
   eating: 0
@@ -1613,7 +1620,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2041348366, guid: e6e8a6730a92e42078190e9fbc9f4589, type: 3}
+  m_Sprite: {fileID: -508612582, guid: 53b67b593ba004d539cbd1d9a5ba5aab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1677,7 +1684,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.15}
   serializedVersion: 2
-  m_Radius: 0.4375
+  m_Radius: 0.2908665
 --- !u!95 &840471504
 Animator:
   serializedVersion: 4
@@ -1845,7 +1852,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -11
+  m_SortingOrder: 11
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
