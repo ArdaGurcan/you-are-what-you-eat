@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
   Rigidbody2D rb;
   Animator anim;
   SpriteRenderer sr;
+  public Animator eatingAnimation;
   [SerializeField]
   float speed = 5f;
 
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
       anim.SetFloat("Vertical", inputVector.y);
       anim.SetFloat("Speed", inputVector.sqrMagnitude);
     }
+    if(Input.GetKeyDown(KeyCode.E)){Eat();}
   }
 
   void FixedUpdate()
@@ -82,5 +84,11 @@ public class PlayerMovement : MonoBehaviour
   {
     dead = true;
     anim.SetBool("Dead", true);
+  }
+
+  public void Eat()
+  {
+    age = 0;
+    eatingAnimation.SetTrigger("Eat");
   }
 }
