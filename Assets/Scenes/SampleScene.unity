@@ -212,10 +212,7 @@ MonoBehaviour:
   movementThreshold: 0.05
   SpriteSheetName: enemy1
   health: 3
-<<<<<<< HEAD
   enemy_collider: {fileID: 506741448}
-=======
->>>>>>> 164d07b (make player appear behind decor and fix rochelle enemy not moving bug)
 --- !u!212 &506741446
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1571,11 +1568,7 @@ MonoBehaviour:
   image: {fileID: 1734367834}
   eatingAnimation: {fileID: 748079528}
   speed: 5
-<<<<<<< HEAD
   swordHitbox: {fileID: 1717310425}
-=======
-  swordHitbox: {fileID: 0}
->>>>>>> 164d07b (make player appear behind decor and fix rochelle enemy not moving bug)
   age: 0
   dead: 0
   eating: 0
@@ -4740,7 +4733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordDamage: 1
-  swordCollider: {fileID: 0}
+  swordCollider: {fileID: 1717310427}
 --- !u!1 &1734367832
 GameObject:
   m_ObjectHideFlags: 0
