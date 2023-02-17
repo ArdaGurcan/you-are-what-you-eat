@@ -56,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
       age += Time.fixedDeltaTime / 10f;
       rb.MovePosition(transform.position + Vector3.Normalize(inputVector) * Time.fixedDeltaTime * speed);
     }
+    
+    if(dead)
+    {
+      rb.isKinematic = true;
+    }
   }
 
   void LateUpdate()
