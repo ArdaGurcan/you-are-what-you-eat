@@ -207,6 +207,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   dead: 0
+  noiseScale: 0.2
+  movementThreshold: 0.05
   SpriteSheetName: enemy1
 --- !u!212 &506741446
 SpriteRenderer:

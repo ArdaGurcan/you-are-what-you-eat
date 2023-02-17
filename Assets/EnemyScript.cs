@@ -15,6 +15,11 @@ public class EnemyScript : MonoBehaviour
   [SerializeField]
   bool dead = false;
   float speed = 2f;
+  [SerializeField]
+  float noiseScale = 2f;
+  [SerializeField]
+  float movementThreshold = 0.1f;
+  Vector3 lastPos;
   // The name of the sprite sheet to use
   public string SpriteSheetName;
   string firstSpritesheetName;
@@ -51,11 +56,22 @@ public class EnemyScript : MonoBehaviour
       if (hit.collider != null && hit.collider.CompareTag("Player"))
       {
         movementVector = player.position - transform.position;
-        anim.SetFloat("MoveX", movementVector.x);
-        anim.SetFloat("MoveY", movementVector.y);
       }
-      anim.SetFloat("Speed", movementVector.magnitude);
-      rb.MovePosition(transform.position + Vector3.Normalize(movementVector) * Time.fixedDeltaTime * speed);
+      else
+      {
+        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise(Time.fixedTime * noiseScale, 0) * 2 - 1, Mathf.PerlinNoise(0, Time.fixedTime * noiseScale) * 2 - 1);
+        if (perlinVector.sqrMagnitude > movementThreshold)
+          movementVector = perlinVector;
+      }
+
+      rb.MovePosition(transform.position + Vector3.Normalize(movementVector) * Time.fixedDeltaTime * speed / 2 );
+      Vector2 velocity = (transform.position - lastPos) / Time.fixedDeltaTime;
+      Debug.Log("Velocity: " + velocity);
+
+      anim.SetFloat("MoveX", velocity.x);
+      anim.SetFloat("MoveY", velocity.y);
+      anim.SetFloat("Speed", velocity.sqrMagnitude);
+      lastPos = transform.position;
     }
 
 
