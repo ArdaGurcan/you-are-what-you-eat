@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour
   PlayerMovement playerScript;
   [SerializeField]
   LayerMask mask;
+  [SerializeField]
   Vector2 movementVector;
   Rigidbody2D rb;
   Animator anim;
@@ -33,6 +34,8 @@ public class EnemyScript : MonoBehaviour
   // The Unity sprite renderer so that we don't have to get it multiple times
   private SpriteRenderer spriteRenderer;
 
+  public float health = 3.0f;
+
   void Start()
   {
     player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -46,13 +49,14 @@ public class EnemyScript : MonoBehaviour
 
   void FixedUpdate()
   {
+    
     if (!dead && !playerScript.eating)
     {
       RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, 4f, mask);
 
       movementVector = Vector3.zero;
       if (hit.collider != null)
-        Debug.Log(hit.collider.name);
+        // Debug.Log(hit.collider.name);
       if (hit.collider != null && hit.collider.CompareTag("Player"))
       {
         movementVector = player.position - transform.position;
@@ -73,7 +77,16 @@ public class EnemyScript : MonoBehaviour
       anim.SetFloat("Speed", velocity.sqrMagnitude);
       lastPos = transform.position;
     }
+    else {
+      Debug.Log("he shouldn't move after this :(");
+      speed = 0f;
+      rb.isKinematic = true;
+    }
 
+    if (health <= 0.0) {
+      Debug.Log("Health is 0 or less. Enemy has died.");
+      Die();
+    }
 
   }
 
@@ -110,6 +123,11 @@ public class EnemyScript : MonoBehaviour
 
     // Remember the name of the sprite sheet in case it is changed later
     LoadedSpriteSheetName = SpriteSheetName;
+  }
+
+  void OnHit(float damage) {
+    Debug.Log("Enemy was hit for " + damage);
+    health = health - damage;
   }
 
 }

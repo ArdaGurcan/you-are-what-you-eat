@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField]
   float speed = 5f;
 
+  public GameObject swordHitbox;
+  Collider2D swordCollider;
+
   [SerializeField]
   float age = 0;
   [SerializeField]
@@ -35,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     anim = GetComponent<Animator>();
     sr = GetComponent<SpriteRenderer>();
     LoadSpritesheet();
+
+    swordCollider = swordHitbox.GetComponent<Collider2D>();
   }
 
   void Update()
@@ -81,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
     sr.sprite = spritesheetMovement[sr.sprite.name];
-    Debug.Log(image.sprite.name);
+    // Debug.Log(image.sprite.name);
     image.sprite = spritesheetEating[image.sprite.name];
   }
 
