@@ -88,6 +88,7 @@ public class EnemyScript : MonoBehaviour
 
   public void Die()
   {
+    enemy_collider.enabled = false;
     rb.isKinematic = true;
     dead = true;
     anim.SetBool("Dead", true);
