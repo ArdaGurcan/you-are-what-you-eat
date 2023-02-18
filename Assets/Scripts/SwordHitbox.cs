@@ -55,7 +55,7 @@ public class SwordHitbox : MonoBehaviour
   {
     if (attacking && collider.gameObject.layer == 3)
     {
-      attacking = false;
+     
 
       Debug.Log("Collided with " + collider);
       collider.SendMessage("OnHit", swordDamage);

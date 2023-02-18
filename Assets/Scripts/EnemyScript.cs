@@ -21,18 +21,7 @@ public class EnemyScript : MonoBehaviour
   [SerializeField]
   float movementThreshold = 0.1f;
   Vector3 lastPos;
-  // The name of the sprite sheet to use
-  public string SpriteSheetName;
-  string firstSpritesheetName;
 
-  // The name of the currently loaded sprite sheet
-  private string LoadedSpriteSheetName;
-
-  // The dictionary containing all the sliced up sprites in the sprite sheet
-  private Dictionary<string, Sprite> spriteSheet;
-
-  // The Unity sprite renderer so that we don't have to get it multiple times
-  private SpriteRenderer spriteRenderer;
 
   public float health = 3.0f;
 
@@ -42,15 +31,14 @@ public class EnemyScript : MonoBehaviour
   void Start()
   {
     
-    unique = transform.GetHashCode();
+    unique = transform.position.GetHashCode();
+    Debug.Log(unique/1_000_000_000);
     player = GameObject.FindGameObjectWithTag("Player").transform;
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     enemy_collider = GetComponent<Collider2D>();
-    spriteRenderer = GetComponent<SpriteRenderer>();
-    firstSpritesheetName = SpriteSheetName;
+
     playerScript = player.GetComponent<PlayerMovement>();
-    LoadSpriteSheet();
   }
 
   void FixedUpdate()
@@ -68,7 +56,7 @@ public class EnemyScript : MonoBehaviour
       }
       else
       {
-        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise((Time.fixedTime * noiseScale + unique) % (float.MaxValue), 0) * 2 - 1, Mathf.PerlinNoise(0, (Time.fixedTime * noiseScale + unique) % (float.MaxValue)) * 2 - 1);
+        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise((Time.fixedTime * noiseScale + unique/10000) % (float.MaxValue), 0) * 2 - 1, Mathf.PerlinNoise(0, (Time.fixedTime * noiseScale + unique/10000) % (float.MaxValue)) * 2 - 1);
         if (perlinVector.sqrMagnitude > movementThreshold)
           movementVector = perlinVector;
       }
@@ -98,33 +86,7 @@ public class EnemyScript : MonoBehaviour
 
   }
 
-  // Runs after the animation has done its work
-  private void LateUpdate()
-  {
-    // Check if the sprite sheet name has changed (possibly manually in the inspector)
-    if (LoadedSpriteSheetName != SpriteSheetName)
-    {
-      // Load the new sprite sheet
-      LoadSpriteSheet();
-    }
 
-    // Swap out the sprite to be rendered by its name
-    // Important: The name of the sprite must be the same!
-    int index = int.Parse(spriteRenderer.sprite.name.Split('_')[1]);
-    spriteRenderer.sprite = spriteSheet[SpriteSheetName + "_" + index];
-  }
-
-  // Loads the sprites from a sprite sheet
-  private void LoadSpriteSheet()
-  {
-    // Load the sprites from a sprite sheet file (png). 
-    // Note: The file specified must exist in a folder named Resources
-    var sprites = Resources.LoadAll<Sprite>(SpriteSheetName);
-    spriteSheet = sprites.ToDictionary(x => x.name, x => x);
-
-    // Remember the name of the sprite sheet in case it is changed later
-    LoadedSpriteSheetName = SpriteSheetName;
-  }
 
   void OnHit(float damage)
   {

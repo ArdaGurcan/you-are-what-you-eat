@@ -9,13 +9,16 @@ public class Crib : MonoBehaviour
   bool alive = true;
   PlayerMovement player;
 
+  void Start()
+  {
+    player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+  }
 
   void OnTriggerEnter2D(Collider2D other)
   {
     if (other.CompareTag("Player"))
     {
       nearby = true;
-      player = other.GetComponent<PlayerMovement>();
     }
   }
 
@@ -27,7 +30,7 @@ public class Crib : MonoBehaviour
 
   void Update()
   {
-    if (alive && nearby && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
+    if (!player.eating && alive && nearby && (Input.GetKeyDown(KeyCode.Z) || Input.GetMouseButtonDown(0)))
     {
       alive = false;
       player.Eat();
