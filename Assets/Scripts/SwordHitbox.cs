@@ -10,9 +10,11 @@ public class SwordHitbox : MonoBehaviour
   float attackDuration = 0.300f;
   float attackTimer = 0f;
   Animator anim;
+  PlayerMovement player;
   // Start is called before the first frame update
   void Start()
   {
+    player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     if (swordCollider == null)
     {
       Debug.Log("Sword Collider not set");
@@ -26,7 +28,7 @@ public class SwordHitbox : MonoBehaviour
   void Update()
   {
 
-    if (!attacking && Input.GetKeyDown(KeyCode.X))
+    if (!player.eating && !player.dead && !attacking && Input.GetKeyDown(KeyCode.X))
     {
       attacking = true;
       attackTimer = attackDuration;
