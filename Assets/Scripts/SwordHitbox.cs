@@ -28,7 +28,7 @@ public class SwordHitbox : MonoBehaviour
   void Update()
   {
 
-    if (!player.eating && !player.dead && !attacking && Input.GetKeyDown(KeyCode.X))
+    if (!player.eating && !player.dead && !attacking && player.hasScapel && Input.GetKeyDown(KeyCode.X))
     {
       attacking = true;
       attackTimer = attackDuration;
@@ -55,8 +55,7 @@ public class SwordHitbox : MonoBehaviour
   {
     if (attacking && collider.gameObject.layer == 3)
     {
-     
-
+    
       Debug.Log("Collided with " + collider);
       collider.SendMessage("OnHit", swordDamage);
 

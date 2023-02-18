@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
   public bool dead = false;
    bool invincible = false;
   public bool eating = false;
+  public bool hasScapel = false;
   float extraSpeed = 1f;
   int spriteAge;
   Dictionary<string, Sprite> spritesheetMovement;
@@ -54,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
       anim.SetFloat("Speed", inputVector.sqrMagnitude);
     }
     if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    if(hasScapel) {
+      Debug.Log("Scapel Obtained");
+    }
+
   }
 
   void FixedUpdate()
