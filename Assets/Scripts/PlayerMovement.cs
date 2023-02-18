@@ -23,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
   float age = 0;
   [SerializeField]
   public bool dead = false;
-
+  public bool invincible = true;
   public bool eating = false;
-
+  float extraSpeed = 1f;
   int spriteAge;
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     sr = GetComponent<SpriteRenderer>();
+    
     LoadSpritesheet();
 
     swordCollider = swordHitbox.GetComponent<Collider2D>();
@@ -59,10 +60,10 @@ public class PlayerMovement : MonoBehaviour
     if (!dead && !eating)
     {
       age += Time.fixedDeltaTime / 5f;
-      rb.MovePosition(transform.position + Vector3.Normalize(inputVector) * Time.fixedDeltaTime * speed);
+      rb.MovePosition(transform.position + Vector3.Normalize(inputVector) * Time.fixedDeltaTime * speed * extraSpeed);
     }
-    
-    if(dead)
+
+    if (dead)
     {
       rb.isKinematic = true;
     }
@@ -72,15 +73,15 @@ public class PlayerMovement : MonoBehaviour
   {
     if (!dead)
     {
-        if (age >= 4f)
-        {
-          Die();
-
-        }
-      if (Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f)) != spriteAge)
+      if (age >= 4f)
       {
-        
-          LoadSpritesheet();
+        Die();
+
+      }
+      if (Mathf.FloorToInt(Mathf.Clamp(age, 0, 2.9f)) != spriteAge)
+      {
+
+        LoadSpritesheet();
       }
       speed = 5f - 0.75f * age;
 
@@ -92,12 +93,12 @@ public class PlayerMovement : MonoBehaviour
 
   void LoadSpritesheet()
   {
-    var sprites = Resources.LoadAll<Sprite>("age" + Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f)));
-    var images = Resources.LoadAll<Sprite>("eat" + Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f)));
+    var sprites = Resources.LoadAll<Sprite>("age" + Mathf.FloorToInt(Mathf.Clamp(age, 0, 2.9f)));
+    var images = Resources.LoadAll<Sprite>("eat" + Mathf.FloorToInt(Mathf.Clamp(age, 0, 2.9f)));
 
     spritesheetMovement = sprites.ToDictionary(x => x.name, x => x);
     spritesheetEating = images.ToDictionary(x => x.name, x => x);
-    spriteAge = Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f));
+    spriteAge = Mathf.FloorToInt(Mathf.Clamp(age, 0, 2.9f));
   }
 
 
@@ -107,16 +108,52 @@ public class PlayerMovement : MonoBehaviour
     anim.SetBool("Dead", true);
   }
 
-  public void Eat()
+  public void Eat(int type)
   {
     // age = 0;
-    if (!dead && !eating){
+    if (!dead && !eating)
+    {
+      if (type == 1) // speed
+        StartCoroutine(Speed());
+      else if (type == 2)
+        StartCoroutine(Invincible());
+      else if (type == 3)
+        StartCoroutine(Slow ());
       eating = true;
       StartCoroutine(Delay());
     }
   }
 
-  IEnumerator Delay() {
+  IEnumerator Invincible()
+  {
+    sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .6f);
+    invincible = true;
+    yield return new WaitForSeconds(5f);
+    invincible = false;
+    sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+
+  }
+
+  IEnumerator Speed()
+  {
+    sr.color = new Color((16*9 + 8)/255f,1,(16*9+4)/255f,sr.color.a);
+    extraSpeed *= 1.5f;
+    yield return new WaitForSeconds(5f);
+    extraSpeed /= 1.5f;
+    sr.color = new Color(1,1,1, sr.color.a);
+  }
+
+  IEnumerator Slow()
+  {
+    sr.color = new Color(1,0.5613208f,0.6534183f,sr.color.a);
+    extraSpeed *= .75f;
+    yield return new WaitForSeconds(5f);
+    extraSpeed /= .75f;
+    sr.color = new Color(1,1,1, sr.color.a);
+  }
+
+  IEnumerator Delay()
+  {
 
     eatingAnimation.SetTrigger("Eat");
     yield return new WaitForSeconds(1.375f);
@@ -126,7 +163,15 @@ public class PlayerMovement : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D collisionInfo)
   {
-    if (collisionInfo.collider.gameObject.layer == 3){
+    if (collisionInfo.collider.gameObject.layer == 3 && !invincible)
+    {
+      Die();
+    }
+  }
+  void OnCollisionStay2D(Collision2D collisionInfo)
+  {
+    if (collisionInfo.collider.gameObject.layer == 3 && !invincible)
+    {
       Die();
     }
   }

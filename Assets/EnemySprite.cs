@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[ExecuteAlways]
+
 public class EnemySprite : MonoBehaviour
 {
   // The name of the sprite sheet to use
