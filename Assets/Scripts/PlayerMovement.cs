@@ -24,22 +24,25 @@ public class PlayerMovement : MonoBehaviour
   float age = 0;
   [SerializeField]
   public bool dead = false;
-   bool invincible = false;
+  bool invincible = false;
   public bool eating = false;
   public bool hasScapel = false;
   float extraSpeed = 1f;
   int spriteAge;
+  public string priorityDialogue = "";
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
 
   Vector3 inputVector;
 
+  public string[] powerupDialogues;
   void Start()
   {
+
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     sr = GetComponent<SpriteRenderer>();
-    
+
     LoadSpritesheet();
 
     swordCollider = swordHitbox.GetComponent<Collider2D>();
@@ -122,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
       else if (type == 2)
         StartCoroutine(Invincible());
       else if (type == 3)
-        StartCoroutine(Slow ());
+        StartCoroutine(Slow());
       eating = true;
       StartCoroutine(Delay());
     }
@@ -130,30 +133,38 @@ public class PlayerMovement : MonoBehaviour
 
   IEnumerator Invincible()
   {
+    priorityDialogue = powerupDialogues[1];
     sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .6f);
     invincible = true;
     yield return new WaitForSeconds(5f);
     invincible = false;
     sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
+    priorityDialogue="";
 
   }
 
   IEnumerator Speed()
   {
-    sr.color = new Color((16*9 + 8)/255f,1,(16*9+4)/255f,sr.color.a);
+    priorityDialogue = powerupDialogues[0];
+    sr.color = new Color((16 * 9 + 8) / 255f, 1, (16 * 9 + 4) / 255f, sr.color.a);
     extraSpeed *= 1.5f;
     yield return new WaitForSeconds(5f);
     extraSpeed /= 1.5f;
-    sr.color = new Color(1,1,1, sr.color.a);
+    sr.color = new Color(1, 1, 1, sr.color.a);
+    priorityDialogue="";
+
   }
 
   IEnumerator Slow()
   {
-    sr.color = new Color(1,0.5613208f,0.6534183f,sr.color.a);
+    priorityDialogue = powerupDialogues[2];
+    sr.color = new Color(1, 0.5613208f, 0.6534183f, sr.color.a);
     extraSpeed *= .75f;
     yield return new WaitForSeconds(5f);
     extraSpeed /= .75f;
-    sr.color = new Color(1,1,1, sr.color.a);
+    sr.color = new Color(1, 1, 1, sr.color.a);
+    priorityDialogue="";
+
   }
 
   IEnumerator Delay()

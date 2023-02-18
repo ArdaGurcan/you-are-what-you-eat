@@ -294,22 +294,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4674864633149835844, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674864633149835844, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674864633149835844, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4674864633149835844, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4674864633149835846, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
       propertyPath: m_Name
       value: Player
@@ -678,6 +662,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &874133147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1125109640225575811, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
+  m_PrefabInstance: {fileID: 324706340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &874133149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874133147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1669d818cfb84dad9440384197cc170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textFile: {fileID: 4900000, guid: 84653357eb4ac404dbed1e8dfa3f15d5, type: 3}
+  dialogues: []
 --- !u!1 &908820869
 GameObject:
   m_ObjectHideFlags: 0
