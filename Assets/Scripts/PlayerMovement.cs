@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
   float age = 0;
   [SerializeField]
   public bool dead = false;
-  public bool invincible = true;
+   bool invincible = false;
   public bool eating = false;
   float extraSpeed = 1f;
   int spriteAge;
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
       anim.SetFloat("Vertical", inputVector.y);
       anim.SetFloat("Speed", inputVector.sqrMagnitude);
     }
-
+    if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
 
   void FixedUpdate()
@@ -106,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
   {
     dead = true;
     anim.SetBool("Dead", true);
+    eatingAnimation.SetTrigger("Die");
   }
 
   public void Eat(int type)
