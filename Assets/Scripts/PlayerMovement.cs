@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField]
   float age = 0;
   [SerializeField]
-  bool dead = false;
+  public bool dead = false;
 
   public bool eating = false;
 
@@ -51,14 +51,14 @@ public class PlayerMovement : MonoBehaviour
       anim.SetFloat("Vertical", inputVector.y);
       anim.SetFloat("Speed", inputVector.sqrMagnitude);
     }
-    if (Input.GetKeyDown(KeyCode.E)) { Eat(); }
+
   }
 
   void FixedUpdate()
   {
     if (!dead && !eating)
     {
-      age += Time.fixedDeltaTime / 10f;
+      age += Time.fixedDeltaTime / 3f;
       rb.MovePosition(transform.position + Vector3.Normalize(inputVector) * Time.fixedDeltaTime * speed);
     }
     
@@ -110,7 +110,8 @@ public class PlayerMovement : MonoBehaviour
   public void Eat()
   {
     // age = 0;
-    StartCoroutine(Delay());
+    if (!dead && !eating)
+      StartCoroutine(Delay());
   }
 
   IEnumerator Delay() {
@@ -119,5 +120,12 @@ public class PlayerMovement : MonoBehaviour
     yield return new WaitForSeconds(1.375f);
     age = 0;
     eating = false;
+  }
+
+  void OnCollisionEnter2D(Collision2D collisionInfo)
+  {
+    if (collisionInfo.collider.gameObject.layer == 3){
+      Die();
+    }
   }
 }
