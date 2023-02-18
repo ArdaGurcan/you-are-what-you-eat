@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
   {
     if (!dead && !eating)
     {
-      age += Time.fixedDeltaTime / 3f;
+      age += Time.fixedDeltaTime / 5f;
       rb.MovePosition(transform.position + Vector3.Normalize(inputVector) * Time.fixedDeltaTime * speed);
     }
     
@@ -72,17 +72,17 @@ public class PlayerMovement : MonoBehaviour
   {
     if (!dead)
     {
-      if (Mathf.FloorToInt(age) != spriteAge)
-      {
-        if (age >= 3f)
+        if (age >= 4f)
         {
           Die();
 
         }
-        else
+      if (Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f)) != spriteAge)
+      {
+        
           LoadSpritesheet();
       }
-      speed = 5.5f - 0.95f * age - 0.25f * age * age;
+      speed = 5f - 0.75f * age;
 
     }
     sr.sprite = spritesheetMovement[sr.sprite.name];
@@ -92,12 +92,12 @@ public class PlayerMovement : MonoBehaviour
 
   void LoadSpritesheet()
   {
-    var sprites = Resources.LoadAll<Sprite>("age" + Mathf.FloorToInt(age));
-    var images = Resources.LoadAll<Sprite>("eat" + Mathf.FloorToInt(age));
+    var sprites = Resources.LoadAll<Sprite>("age" + Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f)));
+    var images = Resources.LoadAll<Sprite>("eat" + Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f)));
 
     spritesheetMovement = sprites.ToDictionary(x => x.name, x => x);
     spritesheetEating = images.ToDictionary(x => x.name, x => x);
-    spriteAge = Mathf.FloorToInt(age);
+    spriteAge = Mathf.FloorToInt(Mathf.Clamp(age,0,2.9f));
   }
 
 
@@ -110,12 +110,14 @@ public class PlayerMovement : MonoBehaviour
   public void Eat()
   {
     // age = 0;
-    if (!dead && !eating)
+    if (!dead && !eating){
+      eating = true;
       StartCoroutine(Delay());
+    }
   }
 
   IEnumerator Delay() {
-    eating = true;
+
     eatingAnimation.SetTrigger("Eat");
     yield return new WaitForSeconds(1.375f);
     age = 0;
