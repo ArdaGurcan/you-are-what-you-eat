@@ -294,6 +294,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4674864633149835845, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
+      propertyPath: powerupDialogues.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674864633149835845, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
+      propertyPath: powerupDialogues.Array.data[0]
+      value: Speed Powerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674864633149835845, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
+      propertyPath: powerupDialogues.Array.data[1]
+      value: Invincibility Powerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674864633149835845, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
+      propertyPath: powerupDialogues.Array.data[2]
+      value: Slow Powerdown
+      objectReference: {fileID: 0}
     - target: {fileID: 4674864633149835846, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
       propertyPath: m_Name
       value: Player
