@@ -7,8 +7,9 @@ public class SwordHitbox : MonoBehaviour
   public float swordDamage = 1f;
   public Collider2D swordCollider;
   bool attacking = false;
-  float attackDuration = 0.2f;
+  float attackDuration = 0.300f;
   float attackTimer = 0f;
+  Animator anim;
   // Start is called before the first frame update
   void Start()
   {
@@ -18,6 +19,7 @@ public class SwordHitbox : MonoBehaviour
     }
     swordCollider.GetComponent<Collider2D>();
     Debug.Log(swordCollider);
+    anim = GetComponent<Animator>();
   }
 
 
@@ -28,6 +30,7 @@ public class SwordHitbox : MonoBehaviour
     {
       attacking = true;
       attackTimer = attackDuration;
+      anim.SetTrigger("Swing");
     }
 
     if (attacking && attackTimer > 0)
