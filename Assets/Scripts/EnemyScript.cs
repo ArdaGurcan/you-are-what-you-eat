@@ -37,9 +37,12 @@ public class EnemyScript : MonoBehaviour
   public float health = 3.0f;
 
   public Collider2D enemy_collider;
+  float unique;
 
   void Start()
   {
+    
+    unique = transform.GetHashCode();
     player = GameObject.FindGameObjectWithTag("Player").transform;
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
@@ -65,7 +68,7 @@ public class EnemyScript : MonoBehaviour
       }
       else
       {
-        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise((Time.fixedTime * noiseScale) % float.MaxValue, 0) * 2 - 1, Mathf.PerlinNoise(0, (Time.fixedTime * noiseScale) % float.MaxValue) * 2 - 1);
+        Vector2 perlinVector = new Vector3(Mathf.PerlinNoise((Time.fixedTime * noiseScale + unique) % (float.MaxValue), 0) * 2 - 1, Mathf.PerlinNoise(0, (Time.fixedTime * noiseScale + unique) % (float.MaxValue)) * 2 - 1);
         if (perlinVector.sqrMagnitude > movementThreshold)
           movementVector = perlinVector;
       }
