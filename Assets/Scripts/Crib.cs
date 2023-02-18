@@ -22,7 +22,7 @@ public class Crib : MonoBehaviour
   void OnTriggerExit2D(Collider2D other)
   {
     if (other.CompareTag("Player"))
-      nearby = true;
+      nearby = false;
   }
 
   void Update()
