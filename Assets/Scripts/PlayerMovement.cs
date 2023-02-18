@@ -32,8 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
   Vector3 inputVector;
 
-  public bool haveKnife = false;
-
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -54,11 +52,6 @@ public class PlayerMovement : MonoBehaviour
       anim.SetFloat("Speed", inputVector.sqrMagnitude);
     }
     if (Input.GetKeyDown(KeyCode.E)) { Eat(); }
-
-    if (Input.GetKeyDown(KeyCode.X) && haveKnife) {
-      Debug.Log("Animate attack");
-      //anim.setTrigger();
-    }
   }
 
   void FixedUpdate()
@@ -127,14 +120,4 @@ public class PlayerMovement : MonoBehaviour
     age = 0;
     eating = false;
   }
-
-  void OnTriggerEnter2D(Collider2D collider) {
-        Debug.Log("collided with: " + collider.name);
-        if(collider.name == "knife") {
-            if (Input.GetKeyDown(KeyCode.Space)) { 
-              haveKnife = true;
-              Destroy(GameObject.Find("knife"));
-             }
-        }
-    }
 }
