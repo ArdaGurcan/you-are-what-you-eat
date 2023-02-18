@@ -56,10 +56,6 @@ public class PlayerMovement : MonoBehaviour
     }
     if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-    if(hasScapel) {
-      Debug.Log("Scapel Obtained");
-    }
-
   }
 
   void FixedUpdate()
