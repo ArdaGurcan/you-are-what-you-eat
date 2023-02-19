@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class bgMusicHandler : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class bgMusicHandler : MonoBehaviour
     void Start()
     {
         audioData = GetComponent<AudioSource>();
+        Debug.Log(SceneManager.GetActiveScene().name);
 
     }
 

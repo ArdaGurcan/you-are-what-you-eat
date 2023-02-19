@@ -13487,7 +13487,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -46322,6 +46322,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e04496b0c3ead8197f4c2c8c135f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  mainStart: {fileID: 0}
+  mainRepeat: {fileID: 0}
+  bossRepeat: {fileID: 0}
+  winMusic: {fileID: 0}
 --- !u!82 &1859744623
 AudioSource:
   m_ObjectHideFlags: 0
