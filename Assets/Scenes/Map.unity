@@ -6590,7 +6590,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.102
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13351,6 +13351,7 @@ GameObject:
   - component: {fileID: 863209314}
   - component: {fileID: 863209317}
   - component: {fileID: 863209316}
+  - component: {fileID: 863209318}
   m_Layer: 0
   m_Name: MainLevel
   m_TagString: Untagged
@@ -13393,7 +13394,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13509,6 +13510,24 @@ PolygonCollider2D:
       - {x: 0.21939072, y: -0.41194412}
       - {x: 0.49002025, y: -0.4067389}
       - {x: 0.5123429, y: 0.46498722}
+--- !u!114 &863209318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863209312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e04496b0c3ead8197f4c2c8c135f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  mainStart: {fileID: 8300000, guid: 098fe553121848521b25a3c014241b1a, type: 3}
+  mainRepeat: {fileID: 8300000, guid: f94b9e36a4cb5626da5c41cb4eb3c979, type: 3}
+  bossRepeat: {fileID: 8300000, guid: 21fc3c730cbe8e4858636249bf17044c, type: 3}
+  winMusic: {fileID: 8300000, guid: e3d82ddefadc7ae20a0449b80473c9c4, type: 3}
+  bossPlaying: 0
 --- !u!1 &874133147 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1125109640225575811, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
@@ -46302,7 +46321,7 @@ GameObject:
   - component: {fileID: 1859744625}
   - component: {fileID: 1859744624}
   - component: {fileID: 1859744623}
-  - component: {fileID: 1859744622}
+  - component: {fileID: 1859744627}
   m_Layer: 0
   m_Name: BossRoom
   m_TagString: BossRoom
@@ -46310,23 +46329,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1859744622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859744621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18e04496b0c3ead8197f4c2c8c135f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioData: {fileID: 0}
-  mainStart: {fileID: 0}
-  mainRepeat: {fileID: 0}
-  bossRepeat: {fileID: 0}
-  winMusic: {fileID: 0}
 --- !u!82 &1859744623
 AudioSource:
   m_ObjectHideFlags: 0
@@ -46471,14 +46473,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859744621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.11, y: -11.3, z: 1570.2673}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 52.11, y: -11.299999, z: 1570.2673}
   m_LocalScale: {x: 16, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 97
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1859744627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859744621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf79bdf2c3a4c194b46d1935d3fc4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 863209318}
 --- !u!1001 &1897225899
 PrefabInstance:
   m_ObjectHideFlags: 0
