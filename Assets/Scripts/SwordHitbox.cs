@@ -7,6 +7,7 @@ public class SwordHitbox : MonoBehaviour
   public float swordDamage = 1f;
   public Collider2D swordCollider;
   bool attacking = false;
+  public bool hitEnemy = false;
   float attackDuration = 0.300f;
   float attackTimer = 0f;
   Animator anim;
@@ -33,9 +34,8 @@ public class SwordHitbox : MonoBehaviour
       attacking = true;
       attackTimer = attackDuration;
       anim.SetTrigger("Swing");
-      
-      player.audioData.clip = player.swingSound;
-      player.audioData.Play();
+      StartCoroutine(HitSounds());
+
     }
 
     if (attacking && attackTimer > 0)
@@ -58,11 +58,23 @@ public class SwordHitbox : MonoBehaviour
   {
     if (attacking && collider.gameObject.layer == 3)
     {
-    
+      hitEnemy = true;
       Debug.Log("Collided with " + collider);
       collider.SendMessage("OnHit", swordDamage);
 
     }
+  }
+
+  IEnumerator HitSounds() {
+      player.audioData.clip = player.swingSound;
+      player.audioData.Play();
+      yield return new WaitForSeconds(player.audioData.clip.length);
+      if(hitEnemy) {
+        player.audioData.clip = player.hitFloor;
+        player.audioData.Play();
+        hitEnemy = false;
+        yield return new WaitForSeconds(player.audioData.clip.length);
+      }
   }
 
 }

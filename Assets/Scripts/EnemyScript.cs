@@ -30,7 +30,6 @@ public class EnemyScript : MonoBehaviour
 
   void Start()
   {
-    
     unique = transform.position.GetHashCode();
     Debug.Log(unique/1_000_000_000);
     player = GameObject.FindGameObjectWithTag("Player").transform;

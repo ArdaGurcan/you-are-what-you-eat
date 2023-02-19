@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioClip deathSound;
   public AudioClip swingSound;
   public AudioClip eatSound;
+  public AudioClip hitFloor;
   public string priorityDialogue = "";
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
