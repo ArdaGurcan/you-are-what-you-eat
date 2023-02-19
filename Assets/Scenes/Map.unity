@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: health
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: SpriteSheetName
@@ -6120,7 +6120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: health
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: SpriteSheetName
@@ -16719,7 +16719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: health
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: SpriteSheetName
@@ -46527,7 +46527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: health
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: SpriteSheetName
@@ -46872,7 +46872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: health
-      value: 15
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3194884794072247792, guid: 2c98596ee8aac4d3fbb75066c10fce90, type: 3}
       propertyPath: SpriteSheetName
