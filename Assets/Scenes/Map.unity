@@ -6521,7 +6521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6376819156618681299, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
       propertyPath: m_Text
-      value: Doctors said I'm growing faster than any baby they've ever seen!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6376819156618681299, guid: c345eeba090d540f4abf2f86974dadaa, type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -13694,7 +13694,7 @@ MonoBehaviour:
   mainRepeat: {fileID: 8300000, guid: f94b9e36a4cb5626da5c41cb4eb3c979, type: 3}
   bossRepeat: {fileID: 8300000, guid: 21fc3c730cbe8e4858636249bf17044c, type: 3}
   winMusic: {fileID: 8300000, guid: e3d82ddefadc7ae20a0449b80473c9c4, type: 3}
-  bossPlaying: 0
+  end: 0
 --- !u!1001 &883033658
 PrefabInstance:
   m_ObjectHideFlags: 0

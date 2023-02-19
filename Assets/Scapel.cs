@@ -29,9 +29,9 @@ public class Scapel : MonoBehaviour
 
     IEnumerator slaayyy()
     {
-        player.priorityDialogue = "SLAAYYYY";
+        PlayerMovement.priorityDialogue = "SLAAYYYY";
         yield return new WaitForSeconds(10f);
-        player.priorityDialogue = "";
+        PlayerMovement.priorityDialogue = "";
 
     }
     private void OnCollisionEnter2D(Collision2D other) {

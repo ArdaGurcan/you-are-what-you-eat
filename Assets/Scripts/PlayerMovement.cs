@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioClip eatSound;
   public AudioClip powerSound;
   public AudioClip hitFloor;
-  public string priorityDialogue = "Doctors said I'm growing faster than any baby they've ever seen!";
+  public static string priorityDialogue = "Doctors said I'm growing faster than any baby they've ever seen!";
   public static Vector3 lastCheckpoint = Vector3.zero;
   public static bool firstTimeEating = true;
   Dictionary<string, Sprite> spritesheetMovement;
@@ -53,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
   public string[] powerupDialogues;
   void Start()
   {
+    if (!firstTimeEating)
+      priorityDialogue = "";
     if (lastCheckpoint.Equals(Vector3.zero))
       lastCheckpoint = new Vector3(-5.5f,-0.4f,0);
     transform.position = lastCheckpoint;
@@ -77,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     if (Input.GetKeyDown(KeyCode.R)) {
+      priorityDialogue = "";
       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -265,7 +268,7 @@ StartCoroutine(bigbaby());
 
   IEnumerator bigbaby()
   {
-    priorityDialogue ="Holy moly! And I thought I ate a lot...";
+    priorityDialogue ="Holy moly! Meals on wheels?";
     yield return new WaitForSeconds(10f);
     priorityDialogue ="";
   }

@@ -20,14 +20,14 @@ public class Dialogue : MonoBehaviour
         new string[] { "\r\n", "\r", "\n" },
         System.StringSplitOptions.None
         );
-    InvokeRepeating("NewDialogue", 5f, 10f);
+    InvokeRepeating("NewDialogue", 0f, 10f);
   }
 
 
 void Update()
 {
-  if(!playerText.Equals(player.priorityDialogue)){
-    playerText = player.priorityDialogue;
+  if(!playerText.Equals(PlayerMovement.priorityDialogue)){
+    playerText = PlayerMovement.priorityDialogue;
     NewDialogue();
   }
 }
@@ -36,6 +36,6 @@ void Update()
     if (playerText.Equals(""))
       text.text = dialogues[Random.Range(0, dialogues.Length)];
     else
-      text.text = player.priorityDialogue;
+      text.text = PlayerMovement.priorityDialogue;
   }
 }
