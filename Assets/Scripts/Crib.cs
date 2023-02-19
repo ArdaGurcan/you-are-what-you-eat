@@ -6,6 +6,7 @@ public class Crib : MonoBehaviour
 {
   public Sprite blood;
   bool nearby = false;
+  [SerializeField]
   bool alive = true;
   public int type = 0;
   PlayerMovement player;
