@@ -28,7 +28,7 @@ PlayerMovement player;
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, bottom, (speed/1000f));
+        transform.position = Vector3.MoveTowards(transform.position, bottom, (speed*Time.deltaTime));
         if (player.dead) {
             if (panel.color.a < 0.7f)
             panel.color += new Color(0,0,0,Time.deltaTime/3);
