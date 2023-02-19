@@ -6863,7 +6863,7 @@ GameObject:
   - component: {fileID: 360231628}
   - component: {fileID: 360231627}
   - component: {fileID: 360231626}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint (1)
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -13490,7 +13490,7 @@ GameObject:
   - component: {fileID: 805290956}
   - component: {fileID: 805290955}
   - component: {fileID: 805290954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint (2)
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -13613,7 +13613,7 @@ GameObject:
   - component: {fileID: 863209314}
   - component: {fileID: 863209317}
   - component: {fileID: 863209316}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MainLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16380,7 +16380,7 @@ GameObject:
   - component: {fileID: 989861495}
   - component: {fileID: 989861494}
   - component: {fileID: 989861493}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: End Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -16698,7 +16698,7 @@ GameObject:
   - component: {fileID: 1023930623}
   - component: {fileID: 1023930622}
   - component: {fileID: 1023930621}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -16947,7 +16947,7 @@ GameObject:
   - component: {fileID: 1130366686}
   - component: {fileID: 1130366685}
   - component: {fileID: 1130366684}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint (3)
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -38975,7 +38975,7 @@ GameObject:
   - component: {fileID: 1711779135}
   - component: {fileID: 1711779134}
   - component: {fileID: 1711779133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint (6)
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -47053,7 +47053,7 @@ GameObject:
   - component: {fileID: 1859744624}
   - component: {fileID: 1859744623}
   - component: {fileID: 1859744622}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossRoom
   m_TagString: BossRoom
   m_Icon: {fileID: 0}
@@ -47378,7 +47378,7 @@ GameObject:
   - component: {fileID: 1900103459}
   - component: {fileID: 1900103458}
   - component: {fileID: 1900103457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint (4)
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -47753,7 +47753,7 @@ GameObject:
   - component: {fileID: 1989421991}
   - component: {fileID: 1989421990}
   - component: {fileID: 1989421989}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Checkpoint (5)
   m_TagString: Checkpoint
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
