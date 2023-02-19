@@ -15,13 +15,13 @@ public class Scapel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inScapelRange && Input.GetKeyDown(KeyCode.X)) {
+        if(!PlayerMovement.hasScapel&&inScapelRange && Input.GetKeyDown(KeyCode.X)) {
             PlayerMovement.hasScapel = true;
             StartCoroutine(slaayyy())
 ;        }
         if(PlayerMovement.hasScapel) {
-            this.enabled = false;
-            gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
         }
 
   
