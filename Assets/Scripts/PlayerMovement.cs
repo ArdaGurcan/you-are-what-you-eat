@@ -177,9 +177,9 @@ public class PlayerMovement : MonoBehaviour
   {
     priorityDialogue = powerupDialogues[2];
     sr.color = new Color(1, 0.5613208f, 0.6534183f, sr.color.a);
-    extraSpeed *= .75f;
+    extraSpeed *= .5f;
     yield return new WaitForSeconds(5f);
-    extraSpeed /= .75f;
+    extraSpeed /= .5f;
     sr.color = new Color(1, 1, 1, sr.color.a);
     priorityDialogue="";
 
