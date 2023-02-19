@@ -16,9 +16,9 @@ public class Scapel : MonoBehaviour
     void Update()
     {
         if(inScapelRange && Input.GetKeyDown(KeyCode.X)) {
-            player.hasScapel = true;
+            PlayerMovement.hasScapel = true;
         }
-        if(player.hasScapel) {
+        if(PlayerMovement.hasScapel) {
             this.enabled = false;
             gameObject.SetActive(false);
         }
@@ -26,13 +26,13 @@ public class Scapel : MonoBehaviour
   
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.CompareTag("Player") && player.hasScapel == false)
+        if(other.collider.CompareTag("Player") && PlayerMovement.hasScapel == false)
            inScapelRange = true;
     }
 
    private void OnCollisionExit2D(Collision2D other) 
    {
-        if(other.collider.CompareTag("Player") && player.hasScapel == false)
+        if(other.collider.CompareTag("Player") && PlayerMovement.hasScapel == false)
             inScapelRange = false;
     }
 }

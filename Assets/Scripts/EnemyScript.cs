@@ -43,7 +43,7 @@ public class EnemyScript : MonoBehaviour
   void FixedUpdate()
   {
 
-    if (!dead && !playerScript.eating)
+    if (!dead && !playerScript.eating && Vector3.SqrMagnitude(transform.position - player.position) < 400f)
     {
       RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, 4f, mask);
 

@@ -29,7 +29,7 @@ public class SwordHitbox : MonoBehaviour
   void Update()
   {
 
-    if (!player.eating && !player.dead && !attacking && player.hasScapel && Input.GetKeyDown(KeyCode.X))
+    if (!player.eating && !player.dead && !attacking && PlayerMovement.hasScapel && Input.GetKeyDown(KeyCode.X))
     {
       attacking = true;
       attackTimer = attackDuration;

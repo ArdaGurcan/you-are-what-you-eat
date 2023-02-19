@@ -6,6 +6,7 @@ TagManager:
   tags:
   - boss
   - BossRoom
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
