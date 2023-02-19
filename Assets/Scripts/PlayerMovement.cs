@@ -29,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
   public bool hasScapel = false;
   float extraSpeed = 1f;
   int spriteAge;
+
+
+  public AudioSource audioData;
+  public AudioClip deathSound;
+  public AudioClip swingSound;
+  public AudioClip eatSound;
   public string priorityDialogue = "";
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
@@ -42,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     sr = GetComponent<SpriteRenderer>();
+    audioData = GetComponent<AudioSource>();
 
     LoadSpritesheet();
 
@@ -111,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
   public void Die()
   {
     dead = true;
+    audioData.clip = deathSound;
+    audioData.Play();
     anim.SetBool("Dead", true);
     eatingAnimation.SetTrigger("Die");
   }
@@ -128,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Slow());
       eating = true;
       StartCoroutine(Delay());
+      StartCoroutine(SoundDelay());
     }
   }
 
@@ -171,9 +181,19 @@ public class PlayerMovement : MonoBehaviour
   {
 
     eatingAnimation.SetTrigger("Eat");
+
     yield return new WaitForSeconds(1.375f);
     age = 0;
     eating = false;
+  }
+
+  IEnumerator SoundDelay()
+  {
+    if(age >= 2)
+      yield return new WaitForSeconds(0.2f);
+    yield return new WaitForSeconds(0.375f);
+    audioData.clip = eatSound;
+    audioData.Play();
   }
 
   void OnCollisionEnter2D(Collision2D collisionInfo)

@@ -33,6 +33,9 @@ public class SwordHitbox : MonoBehaviour
       attacking = true;
       attackTimer = attackDuration;
       anim.SetTrigger("Swing");
+      
+      player.audioData.clip = player.swingSound;
+      player.audioData.Play();
     }
 
     if (attacking && attackTimer > 0)
