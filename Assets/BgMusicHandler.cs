@@ -42,11 +42,11 @@ public class BgMusicHandler : MonoBehaviour
     void Update()
     {
         if(audioData.isPlaying == false) {
-            if(BgMusicHandler.bossPlaying) {
-                audioData.clip = bossRepeat;
-                audioData.Play();
-            } else if(end) {
+            if(end) {
                 audioData.clip = winMusic;
+                audioData.Play();
+            } else if(BgMusicHandler.bossPlaying) {
+                audioData.clip = bossRepeat;
                 audioData.Play();
             } else {
                 audioData.clip = mainRepeat;
@@ -61,7 +61,7 @@ public class BgMusicHandler : MonoBehaviour
             audioData.Stop();
             audioData.clip = mainRepeat;
             audioData.Play();
-            bossPlaying = false;
+            BgMusicHandler.bossPlaying = false;
         }
     }
 
