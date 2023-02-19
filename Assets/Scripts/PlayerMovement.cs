@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioClip powerSound;
   public AudioClip hitFloor;
   public string priorityDialogue = "";
-  static Vector3 lastCheckpoint = Vector3.zero;
+  public static Vector3 lastCheckpoint = Vector3.zero;
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
 
