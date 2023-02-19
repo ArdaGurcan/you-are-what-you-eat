@@ -24,6 +24,7 @@ public class EnemySprite : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    if (currentSpriteIndex != 8)
     currentSpriteIndex = (spriteIndex++) % 6 + 1;
     spriteRenderer = GetComponent<SpriteRenderer>();
     firstSpritesheetName = "enemy" + currentSpriteIndex;
