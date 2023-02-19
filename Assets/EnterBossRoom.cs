@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnterBossRoom : MonoBehaviour
 {
-    public bgMusicHandler music;
+    public BgMusicHandler music;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +19,16 @@ public class EnterBossRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.name == "Player") {
-            music.bossPlaying = true;
             music.TriggerBossRoom();
+            BgMusicHandler.bossPlaying = true;
+        }
+    }
+ 
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.name == "Player") {
+            music.TriggerBossRoom();
+            BgMusicHandler.bossPlaying = true;
+            Debug.Log("In the Boss Room");
         }
     }
 }

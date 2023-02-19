@@ -13470,6 +13470,7 @@ GameObject:
   - component: {fileID: 863209314}
   - component: {fileID: 863209317}
   - component: {fileID: 863209316}
+  - component: {fileID: 863209318}
   m_Layer: 7
   m_Name: MainLevel
   m_TagString: Untagged
@@ -46927,7 +46928,7 @@ GameObject:
   - component: {fileID: 1859744625}
   - component: {fileID: 1859744624}
   - component: {fileID: 1859744623}
-  - component: {fileID: 1859744622}
+  - component: {fileID: 1859744627}
   m_Layer: 7
   m_Name: BossRoom
   m_TagString: BossRoom

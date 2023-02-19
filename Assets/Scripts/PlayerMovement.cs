@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
 
+  public BgMusicHandler bgmusic;
+
   Vector3 inputVector;
 
   public string[] powerupDialogues;
@@ -72,7 +74,11 @@ public class PlayerMovement : MonoBehaviour
       anim.SetFloat("Vertical", inputVector.y);
       anim.SetFloat("Speed", inputVector.sqrMagnitude);
     }
-    if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    
+    if (Input.GetKeyDown(KeyCode.R)) {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+      bgmusic.audioData.Stop();
+    }
 
   }
 
