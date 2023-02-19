@@ -24,11 +24,11 @@ public class EnterBossRoom : MonoBehaviour
         }
     }
  
-    private void OnTriggerStay2D(Collider2D other) {
-        if(other.name == "Player") {
-            music.TriggerBossRoom();
-            BgMusicHandler.bossPlaying = true;
-            Debug.Log("In the Boss Room");
-        }
-    }
+    // private void OnTriggerStay2D(Collider2D other) {
+    //     if(other.name == "Player") {
+    //         music.TriggerBossRoom();
+    //         BgMusicHandler.bossPlaying = true;
+    //         Debug.Log("In the Boss Room");
+    //     }
+    // }
 }

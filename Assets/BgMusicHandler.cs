@@ -53,15 +53,15 @@ public class BgMusicHandler : MonoBehaviour
                 audioData.Play();
             }
         }
-        Debug.Log("BossPlaying: " + BgMusicHandler.bossPlaying);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(BgMusicHandler.bossPlaying) {
+        if(BgMusicHandler.bossPlaying && other.name == "Player") {
             audioData.Stop();
             audioData.clip = mainRepeat;
             audioData.Play();
             BgMusicHandler.bossPlaying = false;
+            Debug.Log("Entered Main Area");
         }
     }
 
