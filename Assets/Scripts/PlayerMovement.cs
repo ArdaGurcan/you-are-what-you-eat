@@ -117,11 +117,14 @@ public class PlayerMovement : MonoBehaviour
 
   public void Die()
   {
+    if (!dead) {
+
     dead = true;
     audioData.clip = deathSound;
     audioData.Play();
     anim.SetBool("Dead", true);
     eatingAnimation.SetTrigger("Die");
+    }
   }
 
   public void Eat(int type)
