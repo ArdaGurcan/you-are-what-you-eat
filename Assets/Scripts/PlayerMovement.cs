@@ -143,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
 
   IEnumerator Invincible()
   {
+    gameObject.layer = 6;
     priorityDialogue = powerupDialogues[1];
     sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .6f);
     invincible = true;
@@ -150,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
     invincible = false;
     sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
     priorityDialogue="";
+    gameObject.layer = 0;
 
   }
 
