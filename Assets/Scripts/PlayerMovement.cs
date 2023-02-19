@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioClip deathSound;
   public AudioClip swingSound;
   public AudioClip eatSound;
+  public AudioClip powerSound;
   public AudioClip hitFloor;
   public string priorityDialogue = "";
   Dictionary<string, Sprite> spritesheetMovement;
@@ -144,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(Slow());
       eating = true;
       StartCoroutine(Delay());
-      StartCoroutine(SoundDelay());
+      StartCoroutine(SoundDelay(type));
     }
   }
 
@@ -196,13 +197,20 @@ public class PlayerMovement : MonoBehaviour
     eating = false;
   }
 
-  IEnumerator SoundDelay()
+  IEnumerator SoundDelay(int type)
   {
     if(age >= 2)
       yield return new WaitForSeconds(0.2f);
     yield return new WaitForSeconds(0.375f);
     audioData.clip = eatSound;
     audioData.Play();
+    yield return new WaitForSeconds(audioData.clip.length + 0.314f);
+
+    if(type != 0) {
+      audioData.clip = powerSound;
+      audioData.Play();
+      yield return new WaitForSeconds(audioData.clip.length);
+    }
   }
 
   void OnCollisionEnter2D(Collision2D collisionInfo)
