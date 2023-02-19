@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
         new string[] { "\r\n", "\r", "\n" },
         System.StringSplitOptions.None
         );
-    InvokeRepeating("NewDialogue", 5f, 5f);
+    InvokeRepeating("NewDialogue", 5f, 10f);
   }
 
 

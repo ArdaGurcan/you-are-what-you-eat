@@ -40,8 +40,9 @@ public class PlayerMovement : MonoBehaviour
   public AudioClip eatSound;
   public AudioClip powerSound;
   public AudioClip hitFloor;
-  public string priorityDialogue = "";
+  public string priorityDialogue = "Doctors said I'm growing faster than any baby they've ever seen!";
   public static Vector3 lastCheckpoint = Vector3.zero;
+  public static bool firstTimeEating = true;
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
 
@@ -134,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
   public void Die()
   {
     if (!dead) {
-
+      priorityDialogue = "Maybe this end is not a new beginning...";
     dead = true;
     audioData.clip = deathSound;
     audioData.Play();
@@ -147,8 +148,13 @@ public class PlayerMovement : MonoBehaviour
   public void Eat(int type)
   {
     // age = 0;
+    
     if (!dead && !eating)
     {
+      if(firstTimeEating) {
+        firstTimeEating = false;
+        StartCoroutine(firstTime());
+      }
       if (type == 1) // speed
         StartCoroutine(Speed());
       else if (type == 2)
@@ -160,6 +166,14 @@ public class PlayerMovement : MonoBehaviour
       StartCoroutine(SoundDelay(type));
     }
   }
+
+IEnumerator firstTime()
+{
+        priorityDialogue = powerupDialogues[3];
+  
+  yield return new WaitForSeconds(10f);
+        priorityDialogue = "";
+}
 
   IEnumerator Invincible()
   {
@@ -244,7 +258,16 @@ public class PlayerMovement : MonoBehaviour
   {
     if(other.CompareTag("Checkpoint")){
       lastCheckpoint = other.transform.position;
-      
+      if (other.name.Equals("Checkpoint (6)")) {
+StartCoroutine(bigbaby());
+      }
     }
+  }
+
+  IEnumerator bigbaby()
+  {
+    priorityDialogue ="Holy moly! And I thought I ate a lot...";
+    yield return new WaitForSeconds(10f);
+    priorityDialogue ="";
   }
 }

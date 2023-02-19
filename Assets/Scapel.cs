@@ -17,13 +17,22 @@ public class Scapel : MonoBehaviour
     {
         if(inScapelRange && Input.GetKeyDown(KeyCode.X)) {
             PlayerMovement.hasScapel = true;
-        }
+            StartCoroutine(slaayyy())
+;        }
         if(PlayerMovement.hasScapel) {
             this.enabled = false;
             gameObject.SetActive(false);
         }
 
   
+    }
+
+    IEnumerator slaayyy()
+    {
+        player.priorityDialogue = "SLAAYYYY";
+        yield return new WaitForSeconds(10f);
+        player.priorityDialogue = "";
+
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.CompareTag("Player") && PlayerMovement.hasScapel == false)
