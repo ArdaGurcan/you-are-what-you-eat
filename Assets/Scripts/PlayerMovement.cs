@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField]
   Image image;
 
+  public Image dialogueBox;
+  public Sprite[] dialogueImg;
   public Animator eatingAnimation;
   [SerializeField]
   float speed = 5f;
@@ -112,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
     spritesheetMovement = sprites.ToDictionary(x => x.name, x => x);
     spritesheetEating = images.ToDictionary(x => x.name, x => x);
     spriteAge = Mathf.FloorToInt(Mathf.Clamp(age, 0, 2.9f));
+    dialogueBox.sprite = dialogueImg[spriteAge];
   }
 
 
