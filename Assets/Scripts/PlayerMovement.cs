@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
   public bool dead = false;
   bool invincible = false;
   public bool eating = false;
-  public bool hasScapel = false;
+  public static bool hasScapel = false;
   float extraSpeed = 1f;
   int spriteAge;
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
   public AudioClip powerSound;
   public AudioClip hitFloor;
   public string priorityDialogue = "";
+  public static Vector3 lastCheckpoint = Vector3.zero;
   Dictionary<string, Sprite> spritesheetMovement;
   Dictionary<string, Sprite> spritesheetEating;
 
@@ -48,7 +50,9 @@ public class PlayerMovement : MonoBehaviour
   public string[] powerupDialogues;
   void Start()
   {
-
+    if (lastCheckpoint.Equals(Vector3.zero))
+      lastCheckpoint = new Vector3(-5.5f,-0.4f,0);
+    transform.position = lastCheckpoint;
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
     sr = GetComponent<SpriteRenderer>();
@@ -71,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
   }
+
 
   void FixedUpdate()
   {
@@ -131,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
     eatingAnimation.SetTrigger("Die");
     }
   }
+
 
   public void Eat(int type)
   {
@@ -225,6 +231,14 @@ public class PlayerMovement : MonoBehaviour
     if (collisionInfo.collider.gameObject.layer == 3 && !invincible)
     {
       Die();
+    }
+  }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if(other.CompareTag("Checkpoint")){
+      lastCheckpoint = other.transform.position;
+      
     }
   }
 }
